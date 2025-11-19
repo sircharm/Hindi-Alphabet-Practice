@@ -17,8 +17,12 @@ function arrayShuffle(array) {
     return array;
 }
 
-function answerCheck(answer){
-    //
+function checkAnswer(correctAnswer, userAnswer){
+    if (correctAnswer === userAnswer){
+        alert("Correct!")
+    } else {
+        alert(`The correct answer was ${correctAnswer}.`)
+    }
 }
 
 const images = [
@@ -32,5 +36,5 @@ const images = [
     [  "e",  "./images/vowels/e.png"], // 6
     [ "ai", "./images/vowels/ai.png"], // 7
     [  "o",  "./images/vowels/o.png"], // 8
-    [ "au", "./images/vowels/au.png"] // 9
+    [ "au", "./images/vowels/au.png"]  // 9
 ];

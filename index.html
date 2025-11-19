@@ -3,22 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hindi Alphabet Practice</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div> <image id="question"> </div>
     <script src="script.js"></script>
-    <script> 
+
+    <div> <image id="question"> </div>
+    <div>
+        <input type="text" maxlength="3" id="userAnswer" required></input>
+        <button id="checkBtn">Check</button>
+    </div>
+
+    <script>
+        const checkBtn = document.getElementById("checkBtn");
+        const userAnswer = document.getElementById("userAnswer")
+        userAnswer.addEventListener("keypress", (e) => {
+            if (event.key === "Enter"){
+                checkBtn.click();
+            }
+        })
+        
         let questions = arrayShuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        console.log(questions);
         let x = 0;
         let source = images[questions[x]][1];
         let answer = images[questions[x]][0];
         document.getElementById("question").src=source;
+
+        checkBtn.addEventListener("click", (e) => checkAnswer(answer, userAnswer.value));
+        checkBtn.addEventListener("click", (e) => {
+            x++;
+            // Here's the code to restart the practice
+            if (x > questions.length - 1){
+                x = 0;
+                questions = arrayShuffle(questions);
+                console.log(questions)
+            }
+            source = images[questions[x]][1];
+            answer = images[questions[x]][0];
+            document.getElementById("question").src=source;
+            userAnswer.value = "";
+        });
+
     </script>
-    <form>
-        <input type="text" id="answer" maxlength="3">
-        <input type="submit" id="submitAnswer">
-    </form>
+    
 </body>
 </html>
