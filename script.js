@@ -18,9 +18,11 @@ function arrayShuffle(array) {
 }
 
 function checkAnswer(correctAnswer, userAnswer){
-    if (correctAnswer === userAnswer){
+    if (userAnswer === ""){
+        return;
+    }else if (correctAnswer === userAnswer){
         alert("Correct!")
-    } else {
+    }else {
         alert(`The correct answer was ${correctAnswer}.`)
     }
 }

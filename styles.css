@@ -3,7 +3,21 @@
     color: rgb(71, 26, 26);
     font-size: 16px;
     cursor: pointer;
+    padding: 0px 5px 0px 5px;
+    margin: 5px;
 }
 #checkBtn:hover{
     background-color: rgb(133, 144, 133);
+}
+
+#divAnswer {
+    display: flex;
+    justify-content: center;
+    padding: 5px 5px 0px 0px;
+}
+
+#divImage {
+    display: flex;
+    justify-content: center;
+    padding: 200px 0px 0px 0px;
 }
