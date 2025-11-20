@@ -34,18 +34,17 @@ function finalMessage(rights, all){
     let difference = all.length - rights.length;
     if (difference <= 5){
         alert(`Congratulations, you got ${rights.length} out of ${all.length} questions right!`);
+        //adds one more item unless the list is already full
+        if (all.length < 61) {
+            all.unshift(all.length);
+        }
+    }
     } else{
         alert(`Oof, you only got ${rights.length} out of ${all.length} questions right!`);
     }
     
-    //resets the game
+    //shuffles the questions array to restart the game
     all = arrayShuffle(all);
-
-    //adds one more item unless the list is already full
-    if (all.length < 61) {
-        all.unshift(all.length);
-    }
-}
 
 const images = [
     // VOWELS
