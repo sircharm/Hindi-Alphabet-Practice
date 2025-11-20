@@ -17,13 +17,33 @@ function arrayShuffle(array) {
     return array;
 }
 
-function checkAnswer(correctAnswer, userAnswer){
+function checkAnswer(correctAnswer, userAnswer, rights){
+    // doesn't accept an empty answer
     if (userAnswer === ""){
         return;
     }else if (correctAnswer === userAnswer){
         alert("Correct!")
+        rights.push(userAnswer);
     }else {
         alert(`The correct answer was ${correctAnswer}.`)
+    }
+}
+
+function finalMessage(rights, all){
+    //checks how many mistakes to show a custom message
+    let difference = all.length - rights.length;
+    if (difference <= 5){
+        alert(`Congratulations, you got ${rights.length} out of ${all.length} questions right!`);
+    } else{
+        alert(`Oof, you only got ${rights.length} out of ${all.length} questions right!`);
+    }
+    
+    //resets the game
+    all = arrayShuffle(all);
+
+    //adds one more item unless the list is already full
+    if (all.length < 61) {
+        all.unshift(all.length);
     }
 }
 

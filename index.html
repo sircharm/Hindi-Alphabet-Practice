@@ -19,6 +19,7 @@
     <script>
         const checkBtn = document.getElementById("checkBtn");
         const userAnswer = document.getElementById("userAnswer")
+        //both pressing enter and clicking the button sends the answer
         userAnswer.addEventListener("keypress", (e) => {
             if (event.key === "Enter"){
                 checkBtn.click();
@@ -33,9 +34,10 @@
         let x = 0;
         let source = images[questions[x]][1];
         let answer = images[questions[x]][0];
+        let rightGuesses = [];
         document.getElementById("question").src=source;
 
-        checkBtn.addEventListener("click", e => checkAnswer(answer, userAnswer.value));
+        checkBtn.addEventListener("click", e => checkAnswer(answer, userAnswer.value, rightGuesses));
         checkBtn.addEventListener("click", e => {
             if (userAnswer.value === ""){
                 return;
@@ -44,7 +46,8 @@
             // Here's the code to restart the practice
             if (x > questions.length - 1){
                 x = 0;
-                questions = arrayShuffle(questions);
+                finalMessage(rightGuesses, questions);
+                rightGuesses = [];
             }
             source = images[questions[x]][1];
             answer = images[questions[x]][0];
